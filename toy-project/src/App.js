@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,29 +12,32 @@ import Login from "./component/Login";
 
 
 function App() {
+
+  const [name, setName]=useState('');
+  //setName(name)
+  const nameChange=(name)=>{
+    setName(name)
+  }
+
   return (
     <div className="App">
       <Router>
       <div>
-        <ul>
+        {/* <ul>
           <li>
-            <Link to="/">home</Link>
+            <Link to="/">login</Link>
           </li>
           <li>
-            <Link to="/login">login</Link>
+            <Link to="/main">home</Link>
           </li>
         </ul>
-        
+         */}
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
+        
         <Switch>
-          
-          <Route path="/login">
-              <Login/>
-          </Route>
-          <Route path="/">
-              <Home/>
-          </Route>
+          <Route exact path="/" component={Login}/>
+          <Route exact path="/main" component={Home}/>
         </Switch>
       </div>
     </Router>

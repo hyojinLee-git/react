@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-const Home = () => {
-    useEffect(()=>{
-        axios.get('/api/hello')
-        .then(res=>{console.log(res.data)})
-    },[])
+
+const Home = ({name}) => {
+    
     return (
         <div>
-            
+            Hello {name}
         </div>
     );
 };

@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "hello@naver.com",
+      "password": "1234",
+      "name": "김독자"
+    },
+    {
+      "id": 2,
+      "email": "myname@google.com",
+      "password": "1212",
+      "name": "유상아"
+    },
+    {
+      "id": 3,
+      "email": "mail@naver.com",
+      "password": "2323",
+      "name": "유중혁"
+    }
+  ]
+}
