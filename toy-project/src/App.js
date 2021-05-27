@@ -23,21 +23,21 @@ function App() {
     <div className="App">
       <Router>
       <div>
-        {/* <ul>
+        <ul>
           <li>
-            <Link to="/">login</Link>
+            <Link to="/login">login</Link>
           </li>
           <li>
-            <Link to="/main">home</Link>
+            <Link to="/">home</Link>
           </li>
         </ul>
-         */}
+         
         {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        
+            renders the first one that matches the current URL.
+        */}
         <Switch>
-          <Route exact path="/" component={Login}/>
-          <Route exact path="/main" component={Home}/>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/" component={Home}/>
         </Switch>
       </div>
     </Router>
