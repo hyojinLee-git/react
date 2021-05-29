@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const Home = ({name}) => {
+const Home = ({userName}) => {
     
     return (
         <div style={{display:"flex", justifyContent:"center", alignItems:"center", height:"100vh"}}>
-            Hello {name}
+            Hello {userName}
         </div>
     );
 };

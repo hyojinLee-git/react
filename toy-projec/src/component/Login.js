@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 
-const Login = ({name}) => {
+const Login = ({onLogin}) => {
 
     //url 이동
     const history=useHistory();
@@ -20,17 +20,8 @@ const Login = ({name}) => {
             [name]:value,
         });
     }
+    const [userName,setUserName]=useState('');
 
-    //이메일, 패스워드 확인
-    const confirm=(data)=>{
-        const user=data.find(item=>{
-            if(item.email===email && item.password===password){
-                return true
-            }
-        });
-        return user.name
-    }
-    
 
     //login 버튼 클릭
     const onSubmit=(event)=>{
@@ -43,23 +34,23 @@ const Login = ({name}) => {
 
         let body={
             email:email,
-            pw:password,
+            password:password,
         }
         
         //데이터 보내기
-        axios.get('http://localhost:4000/users',body)
-        .then(res=>{
-            //console.log(res.data)
-            name=confirm(res.data)
-            console.log(name)
-            history.replace('/main')
+        axios.post(
+            '/user_inform/onLogin',null,{
+                params:body
+            }
+        ).then(res=>{
+            setUserName(res.data);
+            onLogin(userName);
+            console.log(userName)
+            //history.push('/')
         })
-        .catch((e)=>{
-            alert('아이디 또는 비밀번호가 틀립니다.')
-        })
+        .catch(e=>console.log(e))
         
-    }   
-    
+    }
 
     return (
         <div style={{display:'flex',justifyContent:'center', alignItems:'center', width:'100%', height:'100vh'}}>

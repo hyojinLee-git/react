@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   BrowserRouter as Router,
@@ -9,15 +8,12 @@ import {
 import Home from "./component/Home";
 import Login from "./component/Login";
 
-
-
 function App() {
-
-  const [name, setName]=useState('');
-  //setName(name)
-  const nameChange=(name)=>{
-    setName(name)
+  const [userName, setUserName]=useState('');
+  const onLogin=(userName)=>{
+    setUserName(userName)
   }
+  console.log(userName)
 
   return (
     <div className="App">
@@ -36,8 +32,12 @@ function App() {
             renders the first one that matches the current URL.
         */}
         <Switch>
-          <Route exact path="/login" component={Login}/>
-          <Route exact path="/" component={Home}/>
+          <Route exact path="/login">
+            <Login onLogin={onLogin}/>
+          </Route>
+          <Route exact path="/">
+            <Home userName={userName}/>
+          </Route>
         </Switch>
       </div>
     </Router>
