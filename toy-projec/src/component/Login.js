@@ -20,8 +20,6 @@ const Login = ({onLogin}) => {
             [name]:value,
         });
     }
-    const [userName,setUserName]=useState('');
-
 
     //login 버튼 클릭
     const onSubmit=(event)=>{
@@ -43,10 +41,10 @@ const Login = ({onLogin}) => {
                 params:body
             }
         ).then(res=>{
-            setUserName(res.data);
-            onLogin(userName);
-            console.log(userName)
-            //history.push('/')
+            onLogin(res.data);
+            //sessionStorage.setItem('user_email',email)
+            sessionStorage.setItem('user_name',res.data);
+            history.push('/')
         })
         .catch(e=>console.log(e))
         
